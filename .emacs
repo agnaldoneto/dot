@@ -8,6 +8,8 @@
 
 (global-set-key (kbd "M-w") 'kill-ring-save)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Package and MELPA stuff
 
 (require 'package) 
@@ -16,9 +18,25 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-(package-initialize) 
+
+;; Automatically download the packages I use often
+(setq package-list '(haskell-mode cyberpunk-theme markdown-mode))
+
+; activate all the packages (in particular autoloads)
+(package-initialize)
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Load theme
 
 (add-hook 'after-init-hook 
