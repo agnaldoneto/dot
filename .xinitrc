@@ -19,9 +19,9 @@ fi
  
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --tint 0x191970 --height 12 &
  
-# Set the background color
+# Set the background Image
  
-xsetroot -solid midnightblue
+feh --bg-fill ~/dot/lambda.jpg
  
 # Fire up apps
 
