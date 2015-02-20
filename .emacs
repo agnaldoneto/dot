@@ -1,16 +1,23 @@
 
+;; Line numbers everywhere
 (require 'linum)
 (global-linum-mode)
 
+;; no menu, toolbars, scroolbar or splashscreen
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 (setq inhibit-splash-screen t)
 
+;; option is meta in mac
 (setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 
+;; copy
 (global-set-key (kbd "M-w") 'kill-ring-save)
+
+;; don't save backups
+(setq make-backup-files nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
