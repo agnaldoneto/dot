@@ -19,6 +19,9 @@
 ;; don't save backups
 (setq make-backup-files nil)
 
+;; Highlight current line
+(global-hl-line-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Package and MELPA stuff
