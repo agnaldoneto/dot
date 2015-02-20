@@ -1,6 +1,10 @@
 
 (require 'linum)
 (global-linum-mode)
+
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
 (setq inhibit-splash-screen t)
 
 (setq mac-option-modifier 'none)
@@ -42,6 +46,9 @@
 (add-hook 'after-init-hook 
       (lambda () (load-theme 'cyberpunk t)))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Haskell mode indentation
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -68,6 +75,9 @@
                 '(haskell-left-arrows
                   (regexp . "\\(\\s-+\\)\\(<-\\|←\\)\\s-+")
                   (modes quote (haskell-mode literate-haskell-mode)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Markdown mode
 
 (autoload 'markdown-mode "markdown-mode"
