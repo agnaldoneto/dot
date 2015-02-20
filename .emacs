@@ -22,6 +22,10 @@
 ;; Highlight current line
 (global-hl-line-mode)
 
+;; Activate smex
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Package and MELPA stuff
