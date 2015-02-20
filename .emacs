@@ -3,6 +3,9 @@
 (require 'linum)
 (global-linum-mode)
 
+;; ido mode everywhere
+(ido-mode)
+
 ;; no menu, toolbars, scroolbar or splashscreen
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
