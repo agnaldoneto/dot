@@ -40,7 +40,7 @@
 
 
 ;; Automatically download the packages I use often
-(setq package-list '(haskell-mode cyberpunk-theme markdown-mode))
+(setq package-list '(haskell-mode cyberpunk-theme markdown-mode hindent))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -66,9 +66,7 @@
 ;;
 ;; Haskell mode indentation
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-
-(global-set-key (kbd "C-x a r") 'align-regexp)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (eval-after-load "align"
   '(add-to-list 'align-rules-list
@@ -110,9 +108,3 @@
 ;; Tabs and indentation
 (setq-default indent-tabs-mode nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Whitespace by default
-
-(require 'whitespace)
-(global-whitespace-mode)
