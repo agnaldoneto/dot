@@ -20,5 +20,8 @@ feh --bg-fill ~/dot/lambda.jpg
 # start xscreensaver
 /usr/bin/xscreensaver -no-splash &
 
+# Set keyboard repeat rate
+xset r rate 150 40
+
 # Start xmonad
 exec xmonad
