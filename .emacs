@@ -1,4 +1,3 @@
-
 ;; Line numbers everywhere
 (require 'linum)
 (global-linum-mode)
@@ -17,7 +16,7 @@
 (setq mac-command-modifier 'meta)
 
 ;; copy
-(global-set-key (kbd "M-w") 'kill-ring-save)
+(global-set-key (kbd "M-w") 'copy-region-as-kill)
 
 ;; don't save backups
 (setq make-backup-files nil)
@@ -63,12 +62,11 @@
 (add-hook 'after-init-hook 
       (lambda () (load-theme 'cyberpunk t)))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Haskell mode indentation
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 (global-set-key (kbd "C-x a r") 'align-regexp)
 
@@ -101,7 +99,20 @@
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Font
 
 (set-default-font "Inconsolata 12")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Tabs and indentation
+(setq-default indent-tabs-mode nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Whitespace by default
+
+(require 'whitespace)
+(global-whitespace-mode)
