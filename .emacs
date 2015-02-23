@@ -20,6 +20,7 @@
 
 ;; don't save backups
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; Highlight current line
 (global-hl-line-mode)
