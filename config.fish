@@ -1,3 +1,7 @@
+# Path updates
+set PATH ~/.cabal/bin $PATH
+
+# Remember my language!
 set -x LANG en_GB.utf8
 set -x LC_ALL en_GB.utf8
 
