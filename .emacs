@@ -12,11 +12,10 @@
 (setq inhibit-splash-screen t)
 
 ;; option is meta in mac
-(setq mac-option-modifier 'none)
-(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'none)(setq mac-command-modifier 'meta)
 
 ;; copy
-(global-set-key (kbd "M-w") 'copy-region-as-kill)
+(global-set-key (kbd "M-e") 'copy-region-as-kill)
 
 ;; don't save backups
 (setq make-backup-files nil)
@@ -107,5 +106,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Tabs and indentation
+
 (setq-default indent-tabs-mode nil)
 
