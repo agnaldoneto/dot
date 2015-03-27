@@ -40,7 +40,7 @@
 
 
 ;; Automatically download the packages I use often
-(setq package-list '(haskell-mode cyberpunk-theme markdown-mode hindent))
+(setq package-list '(haskell-mode cyberpunk-theme markdown-mode))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
