@@ -33,26 +33,27 @@
 ;; Package and MELPA stuff
 
 (require 'package) 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
+;; List my packages
+(setq package-list '(
+		     haskell-mode
+		     cyberpunk-theme
+                     clojure-mode
+                     clj-refactor
+                     cider
+                     rainbow-delimiters
+		     markdown-mode))
 
-;; Automatically download the packages I use often
-(setq package-list '(haskell-mode cyberpunk-theme markdown-mode))
-
-; activate all the packages (in particular autoloads)
+; activate all the packages
 (package-initialize)
 
 ; fetch the list of packages available 
-(unless package-archive-contents
-  (package-refresh-contents))
+(unless package-archive-contents (package-refresh-contents))
 
 ; install the missing packages
 (dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+  (unless (package-installed-p package) (package-install package)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -109,3 +110,6 @@
 
 (setq-default indent-tabs-mode nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Clojure

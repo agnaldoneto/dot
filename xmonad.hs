@@ -8,6 +8,7 @@ import XMonad.Hooks.SetWMName
 main = do
   xmproc <- spawnPipe "/usr/bin/xmobar /home/luis/.xmobarrc"
   xmonad $ defaultConfig {
+    terminal = "terminator",
     startupHook = setWMName "LG3D",
     manageHook = manageDocks <+> manageHook defaultConfig,
     layoutHook = avoidStruts  $  layoutHook defaultConfig,
