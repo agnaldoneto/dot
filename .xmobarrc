@@ -7,9 +7,10 @@ Config {
                     , Run MultiCpu ["-t","<autototal>","-L","5","-H","50","--normal","green","--high","red"] 50
                     , Run Memory ["-t","Mem: <usedratio>%"] 50
                     , Run Date "%a %b %_d %H:%M:%S" "date" 10
+                    , Run BatteryP ["BAT0"] ["-t", "<acstatus>", "-L", "10", "-H", "80", "-l", "red", "-h", "green", "--", "-O", "Charging", "-o", "Battery: <left>%"] 600
                     , Run StdinReader
                     ]
 
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %multicpu% | %memory% | <fc=#ee9a00>%date%</fc> | %EDDB%"
+       , template = "%StdinReader% }{ %multicpu% | %memory% | %battery% | <fc=#ee9a00>%date%</fc> | %EDDB%"
 }
