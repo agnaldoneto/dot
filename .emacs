@@ -43,7 +43,8 @@
                      clj-refactor
                      cider
                      rainbow-delimiters
-		     markdown-mode))
+		     markdown-mode
+                     smex))
 
 ; activate all the packages
 (package-initialize)
