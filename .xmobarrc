@@ -8,9 +8,10 @@ Config {
                     , Run Memory ["-t","Mem: <usedratio>%"] 50
                     , Run Date "%a %b %_d %H:%M:%S" "date" 10
                     , Run BatteryP ["BAT0"] ["-t", "<acstatus>", "-L", "10", "-H", "80", "-l", "red", "-h", "green", "--", "-O", "Charging", "-o", "Battery: <left>%"] 600
+                    , Run Com "/home/luis/dot/getVolume.sh" [] "volume" 50
                     , Run StdinReader
                     ]
 
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %multicpu% | %memory% | %battery% | <fc=#ee9a00>%date%</fc> | %EDDB%"
+       , template = "%StdinReader% }{ %volume% | %multicpu% | %memory% | %battery% | <fc=#ee9a00>%date%</fc> | %EDDB%"
 }
