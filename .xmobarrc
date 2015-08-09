@@ -3,15 +3,17 @@ Config {
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
-       , commands = [ Run Weather "EDDB" ["-t","<station>: <tempC>C","-L","5","-H","30","--normal","green","--high","red","--low","lightblue"] 3600
-                    , Run MultiCpu ["-t","<autototal>","-L","5","-H","50","--normal","green","--high","red"] 50
-                    , Run Memory ["-t","Mem: <usedratio>%"] 50
-                    , Run Date "%a %b %_d %H:%M:%S" "date" 10
-                    , Run BatteryP ["BAT0"] ["-t", "<acstatus>", "-L", "10", "-H", "80", "-l", "red", "-h", "green", "--", "-O", "Charging", "-o", "Battery: <left>%"] 600
+       , commands = [ Run Weather "EDDB" ["-t","<station>: <tempC>C","-L","5","-H","30","--normal","green","--high","red","--low","lightblue"] 72000
+                    , Run MultiCpu ["-t","<autototal>","-L","5","-H","50","--normal","green","--high","red"] 600
+                    , Run Memory ["-t","Mem: <usedratio>%"] 600
+                    , Run Date "%a %b %_d %H:%M" "date" 600
+                    , Run BatteryP ["BAT0"] ["-t", "<acstatus>", "-L", "10", "-H", "80", "-l", "red", "-h", "green", "--", "-O", "Charging", "-o", "Battery: <left>%"] 3000
                     , Run Com "/home/luis/dot/getVolume.sh" [] "volume" 50
+                    , Run Com "/home/luis/dot/wireless.sh" [] "wifi" 50
                     , Run StdinReader
                     ]
 
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %volume% | %multicpu% | %memory% | %battery% | <fc=#ee9a00>%date%</fc> | %EDDB%"
+       , template = "%StdinReader% }{ %wifi% | %volume% | %multicpu% | %memory% | %battery% | <fc=#ee9a00>%date%</fc> | %EDDB%"
 }
+
