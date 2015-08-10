@@ -38,11 +38,11 @@
 #keystate_scrolllock= enable
 
 # Increase brightness
-"xbacklight -inc 10%"
+"xbacklight -inc 5%"
    XF86MonBrightnessUp
 
 # Decrease brightness
-"xbacklight -dec 10%"
+"xbacklight -dec 5%"
    XF86MonBrightnessDown
 
 # To raise the volume:
