@@ -11,6 +11,9 @@
 (tool-bar-mode -1)
 (setq inhibit-splash-screen t)
 
+;; Follow symlinks by default
+(setq vc-follow-symlinks t)
+
 ;; option is meta in mac
 (setq mac-option-modifier 'none)(setq mac-command-modifier 'meta)
 
