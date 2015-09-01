@@ -17,9 +17,6 @@
 ;; option is meta in mac
 (setq mac-option-modifier 'none)(setq mac-command-modifier 'meta)
 
-;; copy
-(global-set-key (kbd "M-e") 'copy-region-as-kill)
-
 ;; don't save backups
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -27,9 +24,6 @@
 ;; Highlight current line
 (global-hl-line-mode)
 
-;; Activate smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -47,7 +41,8 @@
                      cider
                      rainbow-delimiters
 		     markdown-mode
-                     smex))
+                     smex
+                     find-file-in-repository))
 
 ; activate all the packages
 (package-initialize)
@@ -59,6 +54,20 @@
 (dolist (package package-list)
   (unless (package-installed-p package) (package-install package)))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Sets keybindings
+
+;; copy
+(global-set-key (kbd "M-e") 'copy-region-as-kill)
+
+;; Activate smex
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; find-file-in-repository
+(global-set-key (kbd "C-x C-f") 'find-file-in-repository)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
