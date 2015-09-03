@@ -1,9 +1,5 @@
-;; Line numbers everywhere
-(require 'linum)
-(global-linum-mode)
-
 ;; ido mode everywhere
-(ido-mode)
+;; (ido-mode)
 
 ;; no menu, toolbars, scroolbar or splashscreen
 (menu-bar-mode -1)
@@ -30,19 +26,21 @@
 ;; Package and MELPA stuff
 
 (require 'package) 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/") t)
 
 ;; List my packages
 (setq package-list '(
-		     haskell-mode
 		     cyberpunk-theme
                      clojure-mode
                      clj-refactor
                      cider
                      rainbow-delimiters
 		     markdown-mode
-                     smex
-                     find-file-in-repository))
+                     helm-projectile
+                     ag
+                     projectile
+                     helm))
 
 ; activate all the packages
 (package-initialize)
@@ -63,11 +61,10 @@
 (global-set-key (kbd "M-e") 'copy-region-as-kill)
 
 ;; Activate smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;(global-set-key (kbd "M-x") 'smex)
+;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;(global-set-key (kbd "C-x f") 'fiplr-find-file)
 
-;; find-file-in-repository
-(global-set-key (kbd "C-x C-f") 'find-file-in-repository)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -76,39 +73,20 @@
 (add-hook 'after-init-hook 
       (lambda () (load-theme 'cyberpunk t)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Haskell mode indentation
+;; Line numbers everywhere
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(require 'linum)
+(global-linum-mode)
 
-(eval-after-load "align"
-  '(add-to-list 'align-rules-list
-                '(haskell-types
-                   (regexp . "\\(\\s-+\\)\\(::\\|∷\\)\\s-+")
-                   (modes quote (haskell-mode literate-haskell-mode)))))
-(eval-after-load "align"
-  '(add-to-list 'align-rules-list
-                '(haskell-assignment
-                  (regexp . "\\(\\s-+\\)=\\s-+")
-                  (modes quote (haskell-mode literate-haskell-mode)))))
-(eval-after-load "align"
-  '(add-to-list 'align-rules-list
-                '(haskell-arrows
-                  (regexp . "\\(\\s-+\\)\\(->\\|→\\)\\s-+")
-                  (modes quote (haskell-mode literate-haskell-mode)))))
-(eval-after-load "align"
-  '(add-to-list 'align-rules-list
-                '(haskell-left-arrows
-                  (regexp . "\\(\\s-+\\)\\(<-\\|←\\)\\s-+")
-                  (modes quote (haskell-mode literate-haskell-mode)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Markdown mode
 
-(autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -126,3 +104,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Clojure
+
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Helm
+
+(require 'helm-config)
+(helm-mode 1)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t)
