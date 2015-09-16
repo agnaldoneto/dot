@@ -1,6 +1,3 @@
-;; ido mode everywhere
-;; (ido-mode)
-
 ;; no menu, toolbars, scroolbar or splashscreen
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
@@ -40,7 +37,9 @@
                      helm-projectile
                      ag
                      projectile
-                     helm))
+                     helm
+                     ac-cider
+                     align-cljlet))
 
 ; activate all the packages
 (package-initialize)
@@ -60,10 +59,7 @@
 ;; copy
 (global-set-key (kbd "M-e") 'copy-region-as-kill)
 
-;; Activate smex
-;(global-set-key (kbd "M-x") 'smex)
-;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;(global-set-key (kbd "C-x f") 'fiplr-find-file)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -111,8 +107,15 @@
 ;;
 ;; Helm
 
+(setq tramp-ssh-controlmaster-options
+      (concat
+        "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+        "-o ControlMaster=auto -o ControlPersist=yes"))
+
 (require 'helm-config)
 (helm-mode 1)
 
+(global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "M-x") 'helm-M-x)
+
 (setq helm-M-x-fuzzy-match t)
