@@ -3,15 +3,11 @@ set -x LANG en_US.utf8
 set -x LC_ALL en_US.utf8
 set -x fish_color_cwd cyan
 
-# start X at login
-#if status --is-login
-#    if test -z "$DISPLAY" -a $XDG_VTNR = 1
-#        exec startx
-#   end
-#end
+# Splunk
+set -x SPLUNK_HOME /opt/splunk
 
 # Path updates
-set -x PATH $PATH ~/.cabal/bin /usr/bin ~/.bin
+set -x PATH $PATH ~/.cabal/bin /usr/bin ~/.bin $SPLUNK_HOME
 
 # Java
 #set -x JAVA_HOME /usr/lib/jvm/default
