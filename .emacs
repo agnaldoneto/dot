@@ -1,4 +1,8 @@
-;; no menu, toolbars, scroolbar or splashscreen
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Basics
+
+;; Emacs aspect
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
@@ -7,33 +11,40 @@
 ;; Follow symlinks by default
 (setq vc-follow-symlinks t)
 
-;; option is meta in mac
-(setq mac-option-modifier 'none)(setq mac-command-modifier 'meta)
+;; Option is meta in mac
+(setq mac-option-modifier 'none)
+(setq mac-command-modifier 'meta)
 
-;; don't save backups
+;; Don't save backups
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
 ;; Highlight current line
 (global-hl-line-mode)
 
+;; Font
+(set-default-font "Inconsolata 12")
+
+;; Indentation is with spaces
+(setq-default indent-tabs-mode nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Package and MELPA stuff
+;; Package
 
 (require 'package) 
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ;; List my packages
 (setq package-list '(
-		     cyberpunk-theme
+                     cyberpunk-theme
                      clojure-mode
                      clj-refactor
                      cider
                      rainbow-delimiters
-		     markdown-mode
+                     markdown-mode
                      helm-projectile
                      ag
                      projectile
@@ -41,25 +52,15 @@
                      ac-cider
                      align-cljlet))
 
-; activate all the packages
+; Activate all the packages
 (package-initialize)
 
-; fetch the list of packages available 
+; Fetch the list of packages available 
 (unless package-archive-contents (package-refresh-contents))
 
-; install the missing packages
+; Install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package) (package-install package)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Sets keybindings
-
-;; copy
-(global-set-key (kbd "M-e") 'copy-region-as-kill)
-
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -80,32 +81,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Markdown mode
+;; Markdown mode config
 
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Font
-
-(set-default-font "Inconsolata 12")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Tabs and indentation
-
-(setq-default indent-tabs-mode nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Clojure
+;; Rainbow delimiters when programming
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Helm
+;; Setup Helm
 
 (setq tramp-ssh-controlmaster-options
       (concat
@@ -115,7 +106,12 @@
 (require 'helm-config)
 (helm-mode 1)
 
+(setq helm-M-x-fuzzy-match t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Sets keybindings
+
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "M-x") 'helm-M-x)
-
-(setq helm-M-x-fuzzy-match t)
