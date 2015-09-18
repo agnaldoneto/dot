@@ -3,7 +3,7 @@ set -x LANG en_US.utf8
 set -x LC_ALL en_US.utf8
 set -x fish_color_cwd cyan
 
-# Splunk
+# Splunkp
 set -x SPLUNK_HOME /opt/splunk
 
 # Path updates
