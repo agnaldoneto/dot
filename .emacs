@@ -28,6 +28,8 @@
 ;; Indentation is with spaces
 (setq-default indent-tabs-mode nil)
 
+;; Frame title
+(setq-default frame-title-format '(buffer-file-name "%f" "%b"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -40,25 +42,26 @@
 ;; List my packages
 (setq package-list '(
                      cyberpunk-theme
-                     clojure-mode
-                     clj-refactor
-                     cider
-                     rainbow-delimiters
-                     markdown-mode
-                     helm-projectile
+                     flx-ido
+                     neotree
                      ag
                      projectile
-                     helm
+                     markdown-mode
+                     rainbow-delimiters
+                     clojure-mode
+                     cider
                      ac-cider
-                     align-cljlet))
+                     clj-refactor
+                     align-cljlet
+                     ))
 
-; Activate all the packages
+;; Activate all the packages
 (package-initialize)
 
-; Fetch the list of packages available 
+;; Fetch the list of packages available 
 (unless package-archive-contents (package-refresh-contents))
 
-; Install the missing packages
+;; Install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package) (package-install package)))
 
@@ -98,20 +101,43 @@
 ;;
 ;; Setup Helm
 
-(setq tramp-ssh-controlmaster-options
-      (concat
-        "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
-        "-o ControlMaster=auto -o ControlPersist=yes"))
+;; (setq tramp-ssh-controlmaster-options
+;;       (concat
+;;         "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+;;         "-o ControlMaster=auto -o ControlPersist=yes"))
 
-(require 'helm-config)
-(helm-mode 1)
+;; (require 'helm-config)
+;; (helm-mode 1)
 
-(setq helm-M-x-fuzzy-match t)
+;; (setq helm-M-x-fuzzy-match t)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Enable NeoTree
+
+(require 'neotree)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Enable IDO
+
+(require 'ido)
+(require 'flx-ido)
+
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Sets keybindings
 
-(global-set-key (kbd "C-x f") 'projectile-find-file)
-(global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "C-x f") 'projectile-find-file)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key [f8] 'neotree-toggle)
