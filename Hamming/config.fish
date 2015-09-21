@@ -44,11 +44,11 @@ function fish_prompt
 end
 
 # start X at login
-if status --is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR = 1
-        exec startx
-    end
-end
+# if status --is-login
+#     if test -z "$DISPLAY" -a $XDG_VTNR = 1
+#         exec startx
+#     end
+# end
 
 # Path updates
 set -x PATH $PATH ~/.cabal/bin /usr/bin ~/.bin

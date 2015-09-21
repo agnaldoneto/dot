@@ -100,12 +100,12 @@ myLayout = avoidStruts (
 -- Currently based on the ir_black theme.
 --
 myNormalBorderColor  = "#7c7c7c"
-myFocusedBorderColor = "#ffb6b0"
+myFocusedBorderColor = "#ff00ff"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
     activeBorderColor = "#7C7C7C",
-    activeTextColor = "#CEFFAC",
+    activeTextColor = "#ff00ff",
     activeColor = "#000000",
     inactiveBorderColor = "#7C7C7C",
     inactiveTextColor = "#EEEEEE",
@@ -113,10 +113,10 @@ tabConfig = defaultTheme {
 }
 
 -- Color of current window title in xmobar.
-xmobarTitleColor = "#FFB6B0"
+xmobarTitleColor = "#ff00ff"
 
 -- Color of current workspace in xmobar.
-xmobarCurrentWorkspaceColor = "#CEFFAC"
+xmobarCurrentWorkspaceColor = "#00ffff"
 
 -- Width of the window border in pixels.
 myBorderWidth = 1
@@ -148,7 +148,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Spawn the launcher using command specified by myLauncher.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "exe=`dmenu_run -nb black -nf yellow -sf yellow` && eval \"exec $exe\"")
+     spawn "command=`dmenu_run -nb black -nf yellow -sf cyan` && eval \"exec $command\"")
 
   -- Take a selective screenshot using the command specified by mySelectScreenshot.
   -- , ((modMask .|. shiftMask, xK_p),
