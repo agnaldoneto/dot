@@ -53,6 +53,8 @@
                      ac-cider
                      clj-refactor
                      align-cljlet
+                     helm
+                     helm-projectile
                      ))
 
 ;; Activate all the packages
@@ -101,15 +103,15 @@
 ;;
 ;; Setup Helm
 
-;; (setq tramp-ssh-controlmaster-options
-;;       (concat
-;;         "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
-;;         "-o ControlMaster=auto -o ControlPersist=yes"))
+(setq tramp-ssh-controlmaster-options
+      (concat
+       "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+       "-o ControlMaster=auto -o ControlPersist=yes"))
 
-;; (require 'helm-config)
-;; (helm-mode 1)
+(require 'helm-config)
+(helm-mode 1)
 
-;; (setq helm-M-x-fuzzy-match t)
+(setq helm-M-x-fuzzy-match t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -123,21 +125,30 @@
 ;;
 ;; Enable IDO
 
-(require 'ido)
-(require 'flx-ido)
+;; (require 'ido)
+;; (require 'flx-ido)
 
-(ido-mode 1)
-(ido-everywhere 1)
-(flx-ido-mode 1)
+;; (ido-mode 1)
+;; (ido-everywhere 1)
+;; (flx-ido-mode 1)
 
-;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
+;; ;; disable ido faces to see flx highlights.
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-use-faces nil)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Projectile stuff
+
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+(setq projectile-switch-project-action 'projectile-dired)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Sets keybindings
 
-;; (global-set-key (kbd "C-x f") 'projectile-find-file)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x f") 'projectile-find-file)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key [f8] 'neotree-toggle)
