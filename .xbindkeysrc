@@ -37,14 +37,6 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# Increase brightness
-"xbacklight -inc 1%"
-   XF86MonBrightnessUp
-
-# Decrease brightness
-"xbacklight -dec 1%"
-   XF86MonBrightnessDown
-
 # To raise the volume:
 "amixer set Master 5%+"
    XF86AudioRaiseVolume
