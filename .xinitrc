@@ -23,8 +23,5 @@ feh --bg-fill ~/dot/lambda.jpg
 # Set keyboard repeat rate
 xset r rate 150 40
 
-# My keys
-xbindkeys
-
 # Start xmonad
 exec xmonad
