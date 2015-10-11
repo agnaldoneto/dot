@@ -139,11 +139,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Projectile stuff
+;; Projectile
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-switch-project-action 'neotree-show)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Org mode
+
+(require 'org)
+(setq org-log-done t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
